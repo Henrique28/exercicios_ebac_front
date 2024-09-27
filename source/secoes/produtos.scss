@@ -1,0 +1,53 @@
+@use '../config/var.scss';
+@use 'sass:math';
+
+@function gridWidth($colunas){
+    $porcentagem: math.div($colunas, 100);
+    @return math.div(calc(100% - (math.percentage($porcentagem) - 1%)), $colunas);
+}
+
+.products {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, gridWidth(3));
+    column-gap: 1%;
+    row-gap: 4%;
+    width: 100%;
+
+    img {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .product-button {
+        display: block;
+        background-color: var.$corSecundaria;
+        color: #fff;
+        text-align: center;
+        padding: 8px 0;
+        border-radius: 8px;
+        margin-top: 8px;
+        text-decoration: none;
+
+        &:hover {
+            background-color: lighten(var.$corSecundaria, 10%);
+        }
+    }
+}
+
+@media screen and (max-width: var.$tablet) {
+    .products {
+        grid-template-columns: repeat(2, gridWidth(2));
+        column-gap: 3%;
+    }
+}
+
+@media screen and (max-width: var.$mobile) {
+    .products {
+        display: block;
+
+        .product-item {
+            margin-bottom: 32px;
+        }
+    }
+}

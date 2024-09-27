@@ -1,0 +1,28 @@
+@use 'config/var';
+@use 'config/reset';
+@use 'secoes/menu';
+@use 'secoes/produtos';
+
+body {
+    background-color: var.$corFundo;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: var.$tablet) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+section {
+    padding: 56px 0;
+}
